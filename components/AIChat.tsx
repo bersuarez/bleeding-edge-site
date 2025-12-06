@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Icons } from './Icons';
 import { ChatMessage } from '../types';
-import { sendMessageToGemini } from '../services/geminiService';
+import { submitUserMessage } from '../app/actions';
 
 export const AIChat: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,8 +32,8 @@ export const AIChat: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const responseText = await sendMessageToGemini(userMsg.text);
-      const modelMsg: ChatMessage = { role: 'model', text: responseText, timestamp: new Date() };
+      const response = await submitUserMessage(userMsg.text);
+      const modelMsg: ChatMessage = { role: 'model', text: response.text, timestamp: new Date() };
       setMessages(prev => [...prev, modelMsg]);
     } catch (err) {
       console.error(err);
@@ -87,8 +87,8 @@ export const AIChat: React.FC = () => {
               >
                 <div
                   className={`max-w-[80%] rounded-2xl p-3 text-sm leading-relaxed ${msg.role === 'user'
-                      ? 'bg-brand-600 text-white rounded-br-none'
-                      : 'bg-slate-800 text-slate-200 rounded-bl-none border border-white/5'
+                    ? 'bg-brand-600 text-white rounded-br-none'
+                    : 'bg-slate-800 text-slate-200 rounded-bl-none border border-white/5'
                     }`}
                 >
                   {msg.text}
