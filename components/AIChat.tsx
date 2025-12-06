@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Icons } from './Icons';
 import { ChatMessage } from '../types';
@@ -68,7 +70,7 @@ export const AIChat: React.FC = () => {
                 </span>
               </div>
             </div>
-            <button 
+            <button
               onClick={() => setIsOpen(false)}
               className="text-slate-400 hover:text-white transition-colors"
             >
@@ -79,16 +81,15 @@ export const AIChat: React.FC = () => {
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-950/50">
             {messages.map((msg, idx) => (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
-                <div 
-                  className={`max-w-[80%] rounded-2xl p-3 text-sm leading-relaxed ${
-                    msg.role === 'user' 
-                      ? 'bg-brand-600 text-white rounded-br-none' 
+                <div
+                  className={`max-w-[80%] rounded-2xl p-3 text-sm leading-relaxed ${msg.role === 'user'
+                      ? 'bg-brand-600 text-white rounded-br-none'
                       : 'bg-slate-800 text-slate-200 rounded-bl-none border border-white/5'
-                  }`}
+                    }`}
                 >
                   {msg.text}
                 </div>
@@ -114,7 +115,7 @@ export const AIChat: React.FC = () => {
                 placeholder="Ask about GPU pricing..."
                 className="w-full bg-slate-950 border border-white/10 rounded-xl py-3 pl-4 pr-12 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-500 transition-colors"
               />
-              <button 
+              <button
                 type="submit"
                 disabled={isLoading || !inputValue.trim()}
                 className="absolute right-2 top-2 p-1.5 text-brand-500 hover:text-brand-400 disabled:opacity-50 transition-colors"
@@ -123,7 +124,7 @@ export const AIChat: React.FC = () => {
               </button>
             </div>
             <div className="mt-2 text-center">
-               <span className="text-[10px] text-slate-600">Powered by Gemini 2.5 Flash</span>
+              <span className="text-[10px] text-slate-600">Powered by Gemini 2.5 Flash</span>
             </div>
           </form>
         </div>

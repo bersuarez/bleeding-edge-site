@@ -1,16 +1,18 @@
+'use client';
+
 import React from 'react';
 import { Icons } from './Icons';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
 export const EnergyPage: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    navigate('/');
+    router.push('/');
     setTimeout(() => {
-        const element = document.getElementById('contact');
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      const element = document.getElementById('contact');
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
     }, 100);
   };
 
@@ -44,26 +46,26 @@ export const EnergyPage: React.FC = () => {
         {/* Abstract Background - Grid/Power Lines theme */}
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent"></div>
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="max-w-3xl">
             <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-900 border border-white/10 mb-6">
               <Icons.Zap className="w-4 h-4 text-brand-500" />
               <span className="text-xs font-mono text-brand-300 uppercase tracking-widest">Energy & Site Selection</span>
             </div>
-            
+
             <h1 className="text-5xl md:text-7xl font-display font-bold text-white leading-tight mb-6">
-              Unmatched <br/>
+              Unmatched <br />
               <span className="text-brand-500">Time to Power.</span>
             </h1>
-            
+
             <p className="text-xl text-slate-400 mb-8 leading-relaxed">
-              In the AI race, power availability is the only metric that matters. 
+              In the AI race, power availability is the only metric that matters.
               We leverage proprietary GIS intelligence and deep utility relationships to secure gigawatt-scale capacity.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <button 
+              <button
                 onClick={handleContactClick}
                 className="px-8 py-4 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-lg transition-all flex items-center justify-center shadow-[0_0_20px_rgba(158,28,32,0.3)]"
               >
@@ -79,10 +81,10 @@ export const EnergyPage: React.FC = () => {
       <section className="py-24 px-6 relative border-y border-white/5 bg-white/[0.02]">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
-            
+
             <div className="lg:w-1/2">
               <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-6">
-                Strategic Site Selection: <br/>
+                Strategic Site Selection: <br />
                 <span className="text-brand-500">Your Land or Ours.</span>
               </h2>
               <p className="text-slate-400 mb-8 leading-relaxed">
@@ -96,7 +98,7 @@ export const EnergyPage: React.FC = () => {
                     Multi-factor mapping of utilities, dark fiber routes, environmental constraints, and permitting latency. We identify "hidden gem" sites before they hit the market.
                   </p>
                 </div>
-                
+
                 <div className="relative pl-8 border-l-2 border-white/10">
                   <h3 className="text-xl font-bold text-white mb-2">Our Sites (Shovel-Ready)</h3>
                   <p className="text-sm text-slate-400">
@@ -118,7 +120,7 @@ export const EnergyPage: React.FC = () => {
               <div className="relative aspect-square md:aspect-video bg-slate-900 rounded-2xl border border-white/10 overflow-hidden shadow-2xl group">
                 {/* Map Grid Background */}
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:3rem_3rem] transform perspective-1000 rotate-x-12 scale-110"></div>
-                
+
                 {/* Data Points */}
                 <div className="absolute top-1/4 left-1/4">
                   <div className="relative">
@@ -133,8 +135,8 @@ export const EnergyPage: React.FC = () => {
 
                 <div className="absolute bottom-1/3 right-1/3">
                   <div className="relative">
-                     <div className="w-3 h-3 bg-slate-500 rounded-full absolute"></div>
-                     <div className="absolute right-4 -top-2 text-xs text-slate-500 font-mono">Substation B (At Capacity)</div>
+                    <div className="w-3 h-3 bg-slate-500 rounded-full absolute"></div>
+                    <div className="absolute right-4 -top-2 text-xs text-slate-500 font-mono">Substation B (At Capacity)</div>
                   </div>
                 </div>
 
@@ -150,13 +152,13 @@ export const EnergyPage: React.FC = () => {
 
                 {/* Interface Overlay */}
                 <div className="absolute bottom-0 inset-x-0 bg-slate-900/90 border-t border-white/10 p-4 backdrop-blur-md">
-                   <div className="flex justify-between items-center">
-                      <div className="flex space-x-4 text-xs font-mono text-slate-400">
-                         <div className="flex items-center"><div className="w-2 h-2 bg-brand-500 rounded-full mr-2"></div>HIGH VOLTAGE</div>
-                         <div className="flex items-center"><div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>FIBER</div>
-                      </div>
-                      <div className="text-xs font-mono text-brand-500">GIS LAYER: ACTIVE</div>
-                   </div>
+                  <div className="flex justify-between items-center">
+                    <div className="flex space-x-4 text-xs font-mono text-slate-400">
+                      <div className="flex items-center"><div className="w-2 h-2 bg-brand-500 rounded-full mr-2"></div>HIGH VOLTAGE</div>
+                      <div className="flex items-center"><div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>FIBER</div>
+                    </div>
+                    <div className="text-xs font-mono text-brand-500">GIS LAYER: ACTIVE</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -197,12 +199,12 @@ export const EnergyPage: React.FC = () => {
       {/* CTA */}
       <section className="py-20 px-6">
         <div className="max-w-4xl mx-auto text-center glass-panel p-12 rounded-3xl relative overflow-hidden">
-           <div className="absolute -top-24 -left-24 w-64 h-64 bg-brand-500/10 blur-[80px] pointer-events-none"></div>
+          <div className="absolute -top-24 -left-24 w-64 h-64 bg-brand-500/10 blur-[80px] pointer-events-none"></div>
           <h2 className="text-3xl font-display font-bold text-white mb-6">Need a Site Assessment?</h2>
           <p className="text-slate-400 mb-8 max-w-2xl mx-auto">
             Our team can perform a preliminary GIS analysis of your target region or property within 48 hours.
           </p>
-          <button 
+          <button
             onClick={handleContactClick}
             className="px-8 py-4 bg-white text-slate-950 font-bold rounded-lg hover:bg-slate-200 transition-all shadow-lg"
           >

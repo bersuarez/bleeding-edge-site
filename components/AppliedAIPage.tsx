@@ -1,16 +1,18 @@
+'use client';
+
 import React from 'react';
 import { Icons } from './Icons';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
 export const AppliedAIPage: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    navigate('/');
+    router.push('/');
     setTimeout(() => {
-        const element = document.getElementById('contact');
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      const element = document.getElementById('contact');
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
     }, 100);
   };
 
@@ -47,7 +49,7 @@ export const AppliedAIPage: React.FC = () => {
       {/* Hero */}
       <section className="relative py-24 px-6 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-brand-500/10 rounded-full blur-[100px] pointer-events-none animate-pulse-slow"></div>
-        
+
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2">
@@ -55,18 +57,18 @@ export const AppliedAIPage: React.FC = () => {
                 <Icons.Brain className="w-4 h-4 text-brand-500" />
                 <span className="text-xs font-mono text-brand-300 uppercase tracking-widest">Engineering Services</span>
               </div>
-              
+
               <h1 className="text-5xl md:text-7xl font-display font-bold text-white leading-tight mb-6">
-                From <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-white">Foundation</span> <br/>
+                From <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-white">Foundation</span> <br />
                 to <span className="text-white">Function.</span>
               </h1>
-              
+
               <p className="text-xl text-slate-400 mb-8 leading-relaxed">
                 Hardware is only the beginning. We help enterprises bridge the gap between raw compute and real-world ROI by building custom AI applications that actually work.
               </p>
-              
+
               <div className="flex space-x-4">
-                <button 
+                <button
                   onClick={handleContactClick}
                   className="px-8 py-4 bg-white text-slate-950 font-bold rounded-lg hover:bg-slate-200 transition-all flex items-center group"
                 >
@@ -75,46 +77,46 @@ export const AppliedAIPage: React.FC = () => {
                 </button>
               </div>
             </div>
-            
+
             <div className="lg:w-1/2 relative">
-               <div className="relative z-10 p-1 bg-gradient-to-br from-brand-500/20 to-transparent rounded-2xl overflow-hidden backdrop-blur-sm">
-                  <div className="bg-slate-900 rounded-xl overflow-hidden relative">
-                    {/* Code Editor Mockup */}
-                    <div className="flex items-center space-x-2 px-4 py-3 bg-slate-950 border-b border-white/5">
-                       <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                       <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                       <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                       <span className="ml-4 text-xs text-slate-500 font-mono">agent_workflow.py</span>
-                    </div>
-                    <div className="p-6 font-mono text-sm leading-relaxed overflow-hidden">
-                       <div className="text-slate-500"># Define the reasoning engine</div>
-                       <div className="text-purple-400">class <span className="text-yellow-300">EnterpriseAgent</span>:</div>
-                       <div className="pl-4 text-white">
-                         def <span className="text-blue-400">__init__</span>(self, tools):<br/>
-                         <span className="text-slate-500 ml-4"># Initialize secure memory</span><br/>
-                         <span className="ml-4">self.memory = <span className="text-green-400">VectorStore</span>(encrypt=True)</span><br/>
-                         <span className="ml-4">self.tools = tools</span>
-                       </div>
-                       <div className="pl-4 mt-4 text-white">
-                         async def <span className="text-blue-400">run</span>(self, query):<br/>
-                         <span className="ml-4">plan = await self.planner.create(query)</span><br/>
-                         <span className="ml-4 text-brand-500">return await self.execute(plan)</span>
-                       </div>
-                    </div>
-                    <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-slate-900 to-transparent"></div>
+              <div className="relative z-10 p-1 bg-gradient-to-br from-brand-500/20 to-transparent rounded-2xl overflow-hidden backdrop-blur-sm">
+                <div className="bg-slate-900 rounded-xl overflow-hidden relative">
+                  {/* Code Editor Mockup */}
+                  <div className="flex items-center space-x-2 px-4 py-3 bg-slate-950 border-b border-white/5">
+                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    <span className="ml-4 text-xs text-slate-500 font-mono">agent_workflow.py</span>
                   </div>
-               </div>
-               
-               {/* Floating Badge */}
-               <div className="absolute -bottom-6 -left-6 glass-panel p-4 rounded-xl flex items-center space-x-3 animate-float z-20 border-brand-500/20">
-                 <div className="w-10 h-10 bg-brand-500/20 rounded-full flex items-center justify-center">
-                   <Icons.ShieldCheck className="w-6 h-6 text-brand-500" />
-                 </div>
-                 <div>
-                   <div className="text-white font-bold text-sm">Enterprise Secure</div>
-                   <div className="text-xs text-slate-400">SOC 2 Compliant Pipelines</div>
-                 </div>
-               </div>
+                  <div className="p-6 font-mono text-sm leading-relaxed overflow-hidden">
+                    <div className="text-slate-500"># Define the reasoning engine</div>
+                    <div className="text-purple-400">class <span className="text-yellow-300">EnterpriseAgent</span>:</div>
+                    <div className="pl-4 text-white">
+                      def <span className="text-blue-400">__init__</span>(self, tools):<br />
+                      <span className="text-slate-500 ml-4"># Initialize secure memory</span><br />
+                      <span className="ml-4">self.memory = <span className="text-green-400">VectorStore</span>(encrypt=True)</span><br />
+                      <span className="ml-4">self.tools = tools</span>
+                    </div>
+                    <div className="pl-4 mt-4 text-white">
+                      async def <span className="text-blue-400">run</span>(self, query):<br />
+                      <span className="ml-4">plan = await self.planner.create(query)</span><br />
+                      <span className="ml-4 text-brand-500">return await self.execute(plan)</span>
+                    </div>
+                  </div>
+                  <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                </div>
+              </div>
+
+              {/* Floating Badge */}
+              <div className="absolute -bottom-6 -left-6 glass-panel p-4 rounded-xl flex items-center space-x-3 animate-float z-20 border-brand-500/20">
+                <div className="w-10 h-10 bg-brand-500/20 rounded-full flex items-center justify-center">
+                  <Icons.ShieldCheck className="w-6 h-6 text-brand-500" />
+                </div>
+                <div>
+                  <div className="text-white font-bold text-sm">Enterprise Secure</div>
+                  <div className="text-xs text-slate-400">SOC 2 Compliant Pipelines</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -159,8 +161,8 @@ export const AppliedAIPage: React.FC = () => {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16">
             <div>
-               <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">Our Methodology</h2>
-               <p className="text-slate-400">A rigorous engineering approach to probabilistic software.</p>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">Our Methodology</h2>
+              <p className="text-slate-400">A rigorous engineering approach to probabilistic software.</p>
             </div>
           </div>
 
@@ -185,17 +187,17 @@ export const AppliedAIPage: React.FC = () => {
         <div className="max-w-5xl mx-auto glass-panel p-12 rounded-3xl text-center relative overflow-hidden">
           <div className="absolute inset-0 bg-brand-500/5"></div>
           <div className="relative z-10">
-             <h2 className="text-3xl font-display font-bold text-white mb-6">Ready to build?</h2>
-             <p className="text-slate-300 mb-8 max-w-2xl mx-auto">
-               Stop experimenting with notebooks and start shipping production-grade AI agents. 
-               Our team of ML engineers is ready to augment your workforce.
-             </p>
-             <button 
-               onClick={handleContactClick}
-               className="px-8 py-4 bg-white text-slate-950 font-bold rounded-lg hover:bg-slate-200 transition-all shadow-lg"
-             >
-               Get a Consultation
-             </button>
+            <h2 className="text-3xl font-display font-bold text-white mb-6">Ready to build?</h2>
+            <p className="text-slate-300 mb-8 max-w-2xl mx-auto">
+              Stop experimenting with notebooks and start shipping production-grade AI agents.
+              Our team of ML engineers is ready to augment your workforce.
+            </p>
+            <button
+              onClick={handleContactClick}
+              className="px-8 py-4 bg-white text-slate-950 font-bold rounded-lg hover:bg-slate-200 transition-all shadow-lg"
+            >
+              Get a Consultation
+            </button>
           </div>
         </div>
       </section>

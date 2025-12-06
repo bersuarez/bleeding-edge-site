@@ -1,16 +1,19 @@
+'use client';
+
 import React from 'react';
 import { Icons } from './Icons';
-import { Link, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export const AICloudPage: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    navigate('/');
+    router.push('/');
     setTimeout(() => {
-        const element = document.getElementById('contact');
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      const element = document.getElementById('contact');
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
     }, 100);
   };
 
@@ -67,21 +70,21 @@ export const AICloudPage: React.FC = () => {
                 <span className="text-xs font-mono text-brand-300 uppercase tracking-widest">Instant Availability</span>
               </div>
               <h1 className="text-5xl md:text-7xl font-display font-bold text-white leading-tight mb-6">
-                Bare Metal <br/>
+                Bare Metal <br />
                 <span className="text-brand-500">Intelligence.</span>
               </h1>
               <p className="text-xl text-slate-400 mb-8 leading-relaxed">
-                Zero virtualization overhead. Massive Infiniband scale. 
+                Zero virtualization overhead. Massive Infiniband scale.
                 Deploy H100 clusters in minutes, not months. Pre-configured with PyTorch, JAX, and DeepSpeed.
               </p>
               <div className="flex space-x-4">
-                <button 
+                <button
                   onClick={handleContactClick}
                   className="px-8 py-4 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(158,28,32,0.3)] hover:shadow-[0_0_30px_rgba(158,28,32,0.5)]"
                 >
                   Start Training
                 </button>
-                <button 
+                <button
                   onClick={handleContactClick}
                   className="px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-bold rounded-lg transition-all"
                 >
@@ -90,19 +93,19 @@ export const AICloudPage: React.FC = () => {
               </div>
             </div>
             <div className="w-full md:w-1/2 relative">
-               <div className="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900/50 backdrop-blur-sm p-2">
-                 <img 
-                   src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?q=80&w=2070&auto=format&fit=crop" 
-                   alt="H100 Cluster" 
-                   className="rounded-xl w-full"
-                 />
-                 <div className="absolute bottom-6 left-6 right-6 p-4 bg-black/80 backdrop-blur-md rounded-lg border border-brand-500/30">
-                    <div className="flex justify-between items-center text-xs font-mono">
-                      <span className="text-brand-500 font-bold animate-pulse">● STATUS: OPERATIONAL</span>
-                      <span className="text-slate-400">REGION: US-WEST-2</span>
-                    </div>
-                 </div>
-               </div>
+              <div className="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900/50 backdrop-blur-sm p-2">
+                <img
+                  src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?q=80&w=2070&auto=format&fit=crop"
+                  alt="H100 Cluster"
+                  className="rounded-xl w-full"
+                />
+                <div className="absolute bottom-6 left-6 right-6 p-4 bg-black/80 backdrop-blur-md rounded-lg border border-brand-500/30">
+                  <div className="flex justify-between items-center text-xs font-mono">
+                    <span className="text-brand-500 font-bold animate-pulse">● STATUS: OPERATIONAL</span>
+                    <span className="text-slate-400">REGION: US-WEST-2</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -149,7 +152,7 @@ export const AICloudPage: React.FC = () => {
                 )}
                 <h3 className="text-2xl font-bold text-white mb-2">{instance.name}</h3>
                 <p className="text-slate-400 text-sm mb-6">{instance.chip}</p>
-                
+
                 <div className="flex items-baseline mb-8">
                   <span className="text-4xl font-display font-bold text-white">{instance.price}</span>
                   <span className="text-slate-500 ml-2">{instance.unit}</span>
@@ -165,16 +168,16 @@ export const AICloudPage: React.FC = () => {
                     <span className="text-white font-mono">{instance.interconnect}</span>
                   </div>
                   <div className="pt-2">
-                     {instance.features.map((feat, i) => (
-                       <div key={i} className="flex items-center text-sm text-slate-300 mb-2">
-                         <Icons.ShieldCheck className="w-4 h-4 text-brand-500 mr-2" />
-                         {feat}
-                       </div>
-                     ))}
+                    {instance.features.map((feat, i) => (
+                      <div key={i} className="flex items-center text-sm text-slate-300 mb-2">
+                        <Icons.ShieldCheck className="w-4 h-4 text-brand-500 mr-2" />
+                        {feat}
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                <button 
+                <button
                   onClick={handleContactClick}
                   className={`w-full py-3 rounded-lg font-bold transition-all ${instance.reserved ? 'bg-brand-600 hover:bg-brand-500 text-white' : 'bg-white/5 hover:bg-white/10 text-white'}`}
                 >
@@ -193,8 +196,8 @@ export const AICloudPage: React.FC = () => {
           <p className="text-lg text-slate-300 mb-8">
             Our Applied AI team can help you build custom Slurm clusters, set up Kubernetes (EKS/GKE hybrid), and optimize your training checkpoints.
           </p>
-          <a 
-            href="#contact" 
+          <a
+            href="#contact"
             onClick={handleContactClick}
             className="inline-block px-8 py-4 bg-white text-slate-950 font-bold rounded-lg hover:bg-slate-200 transition-all cursor-pointer"
           >

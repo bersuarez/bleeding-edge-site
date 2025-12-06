@@ -1,9 +1,12 @@
+'use client';
+
 import React from 'react';
 import { Icons } from './Icons';
-import { Link, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export const Hero: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter(); // Keeping router for future extensibility or if I missed usage, but removing navigate.
 
   const handleScroll = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
@@ -45,7 +48,7 @@ export const Hero: React.FC = () => {
 
         <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6">
           <Link
-            to="/ai-cloud"
+            href="/ai-cloud"
             className="group px-8 py-4 bg-brand-600 text-white font-bold rounded-lg hover:bg-brand-500 transition-all flex items-center shadow-[0_0_20px_rgba(158,28,32,0.3)] hover:shadow-[0_0_30px_rgba(158,28,32,0.5)]"
           >
             Deploy GPU Cloud

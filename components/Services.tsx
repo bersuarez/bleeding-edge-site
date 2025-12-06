@@ -1,7 +1,10 @@
+'use client';
+
 import React from 'react';
 import { Icons } from './Icons';
 import { Service } from '../types';
-import { Link, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const services: (Service & { link?: string })[] = [
   {
@@ -43,7 +46,7 @@ const services: (Service & { link?: string })[] = [
 ];
 
 export const Services: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleScroll = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
@@ -117,7 +120,7 @@ export const Services: React.FC = () => {
                   </ul>
 
                   {service.link ? (
-                    <Link to={service.link} className="text-brand-500 font-semibold hover:text-brand-400 inline-flex items-center transition-colors">
+                    <Link href={service.link} className="text-brand-500 font-semibold hover:text-brand-400 inline-flex items-center transition-colors">
                       Learn more <Icons.ArrowRight className="ml-2 w-4 h-4" />
                     </Link>
                   ) : (

@@ -1,14 +1,17 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { Icons } from './Icons';
 import { Logo } from './Logo';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
-  const isHome = location.pathname === '/';
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHome = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,7 +31,7 @@ export const Navbar: React.FC = () => {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
-      navigate('/');
+      router.push('/');
       setTimeout(() => {
         const element = document.getElementById(targetId);
         if (element) element.scrollIntoView({ behavior: 'smooth' });
@@ -44,8 +47,8 @@ export const Navbar: React.FC = () => {
   }
 
   const navLinks: NavLink[] = [
-    { 
-      name: 'Products', 
+    {
+      name: 'Products',
       dropdown: [
         { name: 'Build', path: '/build' },
         { name: 'Colocation', path: '/colocation' },
@@ -53,23 +56,23 @@ export const Navbar: React.FC = () => {
         { name: 'Applied AI', path: '/applied-ai' }
       ]
     },
-    { 
-      name: 'Solutions', 
+    {
+      name: 'Solutions',
       dropdown: [
         { name: 'Government', path: '/government' },
         { name: 'Enterprise', path: '/enterprise' },
         { name: 'AI Native', path: '/ai-native' }
       ]
     },
-    { 
-      name: 'Capabilities', 
+    {
+      name: 'Capabilities',
       dropdown: [
         { name: 'Energy', path: '/energy' },
         { name: 'Manufacturing', path: '/manufacturing' }
       ]
     },
-    { 
-      name: 'Company', 
+    {
+      name: 'Company',
       dropdown: [
         { name: 'About Us', path: '/about-us' },
         { name: 'Become a Partner', path: '/partner' }
@@ -79,13 +82,12 @@ export const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-panel border-b border-white/5 py-4' : 'bg-transparent py-6'
-      }`}
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass-panel border-b border-white/5 py-4' : 'bg-transparent py-6'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <Link to="/" className="flex items-center group">
+        <Link href="/" className="flex items-center group">
           <Logo variant="full" className="transform transition-transform group-hover:scale-105" />
         </Link>
 
@@ -100,17 +102,16 @@ export const Navbar: React.FC = () => {
                     {link.name}
                     <Icons.ChevronDown className="ml-1.5 w-3 h-3 transition-transform duration-300 group-hover:rotate-180" />
                   </button>
-                  
+
                   {/* Dropdown Content */}
                   <div className="absolute top-full left-1/2 transform -translate-x-1/2 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out">
                     <div className="bg-slate-950 border border-white/10 rounded-xl shadow-[0_0_30px_rgba(0,0,0,0.5)] overflow-hidden min-w-[200px] backdrop-blur-xl">
                       {link.dropdown.map((subLink, idx) => (
                         <Link
                           key={subLink.name}
-                          to={subLink.path}
-                          className={`block px-6 py-3 text-sm text-slate-400 hover:text-white hover:bg-brand-900/20 transition-colors ${
-                            idx !== link.dropdown!.length - 1 ? 'border-b border-white/5' : ''
-                          }`}
+                          href={subLink.path}
+                          className={`block px-6 py-3 text-sm text-slate-400 hover:text-white hover:bg-brand-900/20 transition-colors ${idx !== link.dropdown!.length - 1 ? 'border-b border-white/5' : ''
+                            }`}
                         >
                           {subLink.name}
                         </Link>
@@ -126,20 +127,19 @@ export const Navbar: React.FC = () => {
               return (
                 <Link
                   key={link.name}
-                  to={link.path}
-                  className={`text-sm font-medium transition-colors uppercase tracking-widest ${
-                    location.pathname === link.path ? 'text-brand-500' : 'text-slate-300 hover:text-brand-500'
-                  }`}
+                  href={link.path}
+                  className={`text-sm font-medium transition-colors uppercase tracking-widest ${pathname === link.path ? 'text-brand-500' : 'text-slate-300 hover:text-brand-500'
+                    }`}
                 >
                   {link.name}
                 </Link>
               );
-            } 
-            
+            }
+
             // Handle Anchor Links
             return (
-              <a 
-                key={link.name} 
+              <a
+                key={link.name}
                 href={`#${link.id}`}
                 onClick={(e) => handleNavClick(e, link.id!)}
                 className="text-sm font-medium text-slate-300 hover:text-brand-500 transition-colors uppercase tracking-widest cursor-pointer"
@@ -148,7 +148,7 @@ export const Navbar: React.FC = () => {
               </a>
             );
           })}
-          <a 
+          <a
             href="#contact"
             onClick={(e) => handleNavClick(e, 'contact')}
             className="px-6 py-2 bg-white text-brand-950 font-bold rounded-full transition-all hover:bg-slate-200 cursor-pointer"
@@ -158,7 +158,7 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Mobile Toggle */}
-        <button 
+        <button
           className="md:hidden text-white"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
@@ -179,7 +179,7 @@ export const Navbar: React.FC = () => {
                   {link.dropdown.map(subLink => (
                     <Link
                       key={subLink.name}
-                      to={subLink.path}
+                      href={subLink.path}
                       className="text-lg font-medium text-slate-300 hover:text-brand-500 pl-4 border-l border-white/10"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
@@ -191,20 +191,20 @@ export const Navbar: React.FC = () => {
             }
 
             if (link.path) {
-               return (
+              return (
                 <Link
                   key={link.name}
-                  to={link.path}
+                  href={link.path}
                   className="text-lg font-medium text-slate-300 hover:text-brand-500"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
                 </Link>
-               );
+              );
             } else {
               return (
-                <a 
-                  key={link.name} 
+                <a
+                  key={link.name}
                   href={`#${link.id}`}
                   onClick={(e) => handleNavClick(e, link.id!)}
                   className="text-lg font-medium text-slate-300 hover:text-brand-500"

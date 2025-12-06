@@ -1,16 +1,18 @@
+'use client';
+
 import React from 'react';
 import { Icons } from './Icons';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 
 export const AboutUsPage: React.FC = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleContactClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    navigate('/');
+    router.push('/');
     setTimeout(() => {
-        const element = document.getElementById('contact');
-        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      const element = document.getElementById('contact');
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
     }, 100);
   };
 
@@ -49,14 +51,14 @@ export const AboutUsPage: React.FC = () => {
               <Icons.Globe className="w-4 h-4 text-brand-500" />
               <span className="text-xs font-mono text-brand-300 uppercase tracking-widest">Our Mission</span>
             </div>
-            
+
             <h1 className="text-5xl md:text-7xl font-display font-bold text-white leading-tight mb-6">
-              Building the <br/>
+              Building the <br />
               <span className="text-brand-500">Backbone of AI.</span>
             </h1>
-            
+
             <p className="text-xl text-slate-400 mb-8 leading-relaxed">
-              We exist to remove the physical bottlenecks of Artificial Intelligence. 
+              We exist to remove the physical bottlenecks of Artificial Intelligence.
               While others talk about software agents, we pour the concrete and rack the silicon that makes them possible.
             </p>
           </div>
@@ -86,20 +88,20 @@ export const AboutUsPage: React.FC = () => {
 
       {/* Image Section */}
       <section className="py-24 px-6 relative">
-         <div className="max-w-7xl mx-auto">
-            <div className="relative rounded-3xl overflow-hidden aspect-[21/9] border border-white/10 shadow-2xl group">
-               <img 
-                 src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop" 
-                 alt="Data Center Interior" 
-                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
-               />
-               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
-               <div className="absolute bottom-8 left-8">
-                 <div className="text-3xl font-display font-bold text-white">Ashburn Prime</div>
-                 <div className="text-brand-500 font-mono text-sm uppercase">US-EAST-1</div>
-               </div>
+        <div className="max-w-7xl mx-auto">
+          <div className="relative rounded-3xl overflow-hidden aspect-[21/9] border border-white/10 shadow-2xl group">
+            <img
+              src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop"
+              alt="Data Center Interior"
+              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+            <div className="absolute bottom-8 left-8">
+              <div className="text-3xl font-display font-bold text-white">Ashburn Prime</div>
+              <div className="text-brand-500 font-mono text-sm uppercase">US-EAST-1</div>
             </div>
-         </div>
+          </div>
+        </div>
       </section>
 
       {/* Timeline */}
@@ -107,22 +109,22 @@ export const AboutUsPage: React.FC = () => {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-display font-bold text-white mb-16 text-center">Our Trajectory</h2>
           <div className="space-y-12 border-l border-white/10 pl-8 ml-4 md:ml-0 md:pl-0 md:border-l-0">
-             {milestones.map((item, idx) => (
-               <div key={idx} className="flex flex-col md:flex-row md:items-center gap-6 relative">
-                 <div className="hidden md:block w-1/2 text-right pr-12">
-                   <div className="text-4xl font-bold text-brand-800">{item.year}</div>
-                 </div>
-                 
-                 {/* Center Dot */}
-                 <div className="absolute left-[-37px] md:left-1/2 md:-ml-2 w-4 h-4 rounded-full bg-slate-950 border-2 border-brand-500 z-10"></div>
-                 
-                 <div className="w-full md:w-1/2 md:pl-12">
-                    <div className="md:hidden text-2xl font-bold text-brand-800 mb-2">{item.year}</div>
-                    <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                    <p className="text-slate-400">{item.desc}</p>
-                 </div>
-               </div>
-             ))}
+            {milestones.map((item, idx) => (
+              <div key={idx} className="flex flex-col md:flex-row md:items-center gap-6 relative">
+                <div className="hidden md:block w-1/2 text-right pr-12">
+                  <div className="text-4xl font-bold text-brand-800">{item.year}</div>
+                </div>
+
+                {/* Center Dot */}
+                <div className="absolute left-[-37px] md:left-1/2 md:-ml-2 w-4 h-4 rounded-full bg-slate-950 border-2 border-brand-500 z-10"></div>
+
+                <div className="w-full md:w-1/2 md:pl-12">
+                  <div className="md:hidden text-2xl font-bold text-brand-800 mb-2">{item.year}</div>
+                  <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                  <p className="text-slate-400">{item.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -134,7 +136,7 @@ export const AboutUsPage: React.FC = () => {
           <p className="text-slate-400 mb-8 max-w-2xl mx-auto">
             We are always looking for world-class engineers, architects, and problem solvers.
           </p>
-          <button 
+          <button
             onClick={handleContactClick}
             className="px-8 py-4 bg-white text-slate-950 font-bold rounded-lg hover:bg-slate-200 transition-all"
           >
