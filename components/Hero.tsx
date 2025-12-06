@@ -31,14 +31,14 @@ export const Hero: React.FC = () => {
           <span className="text-xs font-mono text-brand-300 uppercase tracking-widest">H100 Clusters Available Now</span>
         </div>
 
-        <h1 className="text-5xl md:text-8xl font-display font-bold text-white leading-tight mb-8">
+        <h1 className="text-5xl md:text-8xl font-display font-bold text-gray-900 leading-tight mb-8">
           Infrastructure for the <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-white">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-gray-900">
             Intelligence Age
           </span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 font-light">
+        <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-12 font-light">
           We build the physical and digital foundations for Artificial Intelligence.
           From megawatt-scale builds to applied neural agents.
         </p>
@@ -54,14 +54,14 @@ export const Hero: React.FC = () => {
           <a
             href="#build"
             onClick={(e) => handleScroll(e, 'build')}
-            className="px-8 py-4 bg-transparent border border-white/20 text-white font-bold rounded-lg hover:bg-white/5 transition-all cursor-pointer"
+            className="px-8 py-4 bg-transparent border border-gray-900/20 text-gray-900 font-bold rounded-lg hover:bg-gray-900/5 transition-all cursor-pointer"
           >
             View Build Specs
           </a>
         </div>
 
         {/* Stats */}
-        <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-12">
+        <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-gray-900/10 pt-12">
           {[
             { label: 'Uptime SLA', value: '100%' },
             { label: 'Power Capacity', value: '500MW+' },
@@ -69,7 +69,7 @@ export const Hero: React.FC = () => {
             { label: 'Global Zones', value: '12' },
           ].map((stat, i) => (
             <div key={i} className="flex flex-col">
-              <span className="text-4xl font-display font-bold text-white mb-2">{stat.value}</span>
+              <span className="text-4xl font-display font-bold text-gray-900 mb-2">{stat.value}</span>
               <span className="text-sm font-mono text-brand-500 uppercase">{stat.label}</span>
             </div>
           ))}
