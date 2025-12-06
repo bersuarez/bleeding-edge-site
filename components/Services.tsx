@@ -44,7 +44,7 @@ const services: (Service & { link?: string })[] = [
 
 export const Services: React.FC = () => {
   const navigate = useNavigate();
-  
+
   const handleScroll = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
     const element = document.getElementById(id);
@@ -54,7 +54,7 @@ export const Services: React.FC = () => {
   };
 
   return (
-    <section className="py-24 relative bg-slate-950">
+    <section className="py-24 relative">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-16">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
@@ -71,8 +71,8 @@ export const Services: React.FC = () => {
             const isEven = index % 2 === 0;
 
             return (
-              <div 
-                key={service.id} 
+              <div
+                key={service.id}
                 id={service.id}
                 className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 items-center`}
               >
@@ -80,9 +80,9 @@ export const Services: React.FC = () => {
                 <div className="w-full md:w-1/2 relative group">
                   <div className={`absolute inset-0 bg-brand-600/20 rounded-2xl transform transition-transform duration-500 ${isEven ? 'translate-x-4 translate-y-4' : '-translate-x-4 translate-y-4'} group-hover:translate-x-0 group-hover:translate-y-0`}></div>
                   <div className="relative rounded-2xl overflow-hidden border border-white/10 aspect-video">
-                    <img 
-                      src={service.image} 
-                      alt={service.title} 
+                    <img
+                      src={service.image}
+                      alt={service.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100 mix-blend-hard-light"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 to-transparent"></div>
@@ -101,7 +101,7 @@ export const Services: React.FC = () => {
                       0{index + 1} / {service.id.replace('-', ' ')}
                     </span>
                   </div>
-                  
+
                   <h3 className="text-3xl font-display font-bold text-white mb-4">{service.title}</h3>
                   <p className="text-lg text-slate-400 mb-8 leading-relaxed">
                     {service.description}
@@ -115,14 +115,14 @@ export const Services: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                  
+
                   {service.link ? (
                     <Link to={service.link} className="text-brand-500 font-semibold hover:text-brand-400 inline-flex items-center transition-colors">
                       Learn more <Icons.ArrowRight className="ml-2 w-4 h-4" />
                     </Link>
                   ) : (
-                    <a 
-                      href="#contact" 
+                    <a
+                      href="#contact"
                       onClick={(e) => handleScroll(e, 'contact')}
                       className="text-brand-500 font-semibold hover:text-brand-400 inline-flex items-center transition-colors cursor-pointer"
                     >

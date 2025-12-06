@@ -3,9 +3,9 @@ import { Icons } from './Icons';
 
 export const Contact: React.FC = () => {
   return (
-    <section id="contact" className="py-24 bg-slate-950 relative overflow-hidden">
-        {/* Background Gradients */}
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-900/10 blur-3xl pointer-events-none"></div>
+    <section id="contact" className="py-24 relative overflow-hidden">
+      {/* Background Gradients */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-900/10 blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -27,7 +27,7 @@ export const Contact: React.FC = () => {
                   <p className="text-slate-500">100 Innovation Dr, Silicon Valley, CA</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start space-x-4">
                 <div className="p-2 bg-white/5 rounded-lg text-brand-500">
                   <Icons.HardDrive className="w-6 h-6" />

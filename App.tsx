@@ -27,33 +27,43 @@ const ScrollToTop = () => {
   return null;
 };
 
+// Separated layout to allow useLocation hook
+const MainLayout = () => {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
+  return (
+    <div className={`min-h-screen text-white font-sans selection:bg-brand-500 selection:text-white ${isHome ? 'bg-transparent' : 'bg-slate-950'}`}>
+      <Navbar />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/build" element={<BuildPage />} />
+          <Route path="/colocation" element={<ColocationPage />} />
+          <Route path="/ai-cloud" element={<AICloudPage />} />
+          <Route path="/applied-ai" element={<AppliedAIPage />} />
+          <Route path="/about-us" element={<AboutUsPage />} />
+          <Route path="/partner" element={<PartnerPage />} />
+          <Route path="/energy" element={<EnergyPage />} />
+          <Route path="/manufacturing" element={<ManufacturingPage />} />
+          <Route path="/government" element={<GovernmentPage />} />
+          <Route path="/enterprise" element={<EnterprisePage />} />
+          <Route path="/ai-native" element={<AINativePage />} />
+          {/* Catch-all route to prevent blank screens if a user clicks an anchor link that HashRouter misinterprets */}
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </main>
+      <Footer />
+      <AIChat />
+    </div>
+  );
+};
+
 function App() {
   return (
     <HashRouter>
       <ScrollToTop />
-      <div className="min-h-screen bg-slate-950 text-white font-sans selection:bg-brand-500 selection:text-white">
-        <Navbar />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/build" element={<BuildPage />} />
-            <Route path="/colocation" element={<ColocationPage />} />
-            <Route path="/ai-cloud" element={<AICloudPage />} />
-            <Route path="/applied-ai" element={<AppliedAIPage />} />
-            <Route path="/about-us" element={<AboutUsPage />} />
-            <Route path="/partner" element={<PartnerPage />} />
-            <Route path="/energy" element={<EnergyPage />} />
-            <Route path="/manufacturing" element={<ManufacturingPage />} />
-            <Route path="/government" element={<GovernmentPage />} />
-            <Route path="/enterprise" element={<EnterprisePage />} />
-            <Route path="/ai-native" element={<AINativePage />} />
-            {/* Catch-all route to prevent blank screens if a user clicks an anchor link that HashRouter misinterprets */}
-            <Route path="*" element={<Home />} />
-          </Routes>
-        </main>
-        <Footer />
-        <AIChat />
-      </div>
+      <MainLayout />
     </HashRouter>
   );
 }
